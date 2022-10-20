@@ -1,11 +1,12 @@
 import { Response } from 'express';
 import { AuthenticatedRequest } from '@/middlewares';
 import httpStatus from 'http-status';
+import hotelService from '@/services/hotelService';
 
 async function getHotelPrice(req: AuthenticatedRequest, res: Response) {
-  const { userId } = req;
+  const hotelPrice = await hotelService.findHotelPrice();
 
-  return res.sendStatus(503);
+  return res.status(httpStatus.OK).send(hotelPrice);
 }
 
 export const hotelController = {
