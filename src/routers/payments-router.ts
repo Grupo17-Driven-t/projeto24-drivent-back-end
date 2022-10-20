@@ -1,11 +1,11 @@
 import { Router } from 'express';
 
-import { createUserSchema } from '@/schemas';
+import { creditCardSchema } from '@/schemas/payments-schema';
 import { validateBody } from '@/middlewares';
-import { usersPost } from '@/controllers';
+import { creditCardPost } from '@/controllers/payments-controller';
 
-const usersRouter = Router();
+const paymentsRouter = Router();
 
-usersRouter.post('/', validateBody(createUserSchema), usersPost);
+paymentsRouter.post('/card', validateBody(creditCardSchema), creditCardPost);
 
-export { usersRouter }
+export { paymentsRouter };
