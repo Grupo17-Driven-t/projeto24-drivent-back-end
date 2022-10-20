@@ -39,7 +39,6 @@ model Event {
   endsAt             DateTime
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
-  Ticket             Ticket?
 }
 
 model Enrollment {
@@ -76,11 +75,9 @@ enum TicketType {
 }
 
 model Ticket {
-  id      Int        @id @default(autoincrement())
-  type    TicketType
-  userId  Int        @unique
-  User    User       @relation(fields: [userId], references: [id])
-  eventId Int        @unique
-  Event   Event      @relation(fields: [eventId], references: [id])
-  isPaid  Boolean    @default(false)
+  id     Int        @id @default(autoincrement())
+  type   TicketType
+  userId Int?       @unique
+  User   User?      @relation(fields: [userId], references: [id])
+  isPaid Boolean    @default(false)
 }

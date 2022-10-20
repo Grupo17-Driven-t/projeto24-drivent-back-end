@@ -17,6 +17,10 @@ services:
       NODE_ENV: production
       DATABASE_URL: ${DATABASE_URL}
       JWT_SECRET: ${JWT_SECRET}
+      REDIS_URL: ${REDIS_URL}
+      REDIRECT_URL: ${REDIRECT_URL}
+      CLIENT_ID: ${CLIENT_ID}
+      CLIENT_SECRET: ${CLIENT_SECRET}
   drivent-postgres-production:
     image: postgres:13-alpine
     environment:
@@ -28,6 +32,12 @@ services:
     volumes:
       - /usr/local/drivent-pg/data:/var/lib/postgresql/data
     command: postgres -p ${POSTGRES_PORT}
+  redis:
+    image: redis
+    restart: always
+    ports:
+      - ${REDIS_PORT}:${REDIS_PORT}
+    command: redis-server
   drivent-nginx:
     image: nginx
     ports:
