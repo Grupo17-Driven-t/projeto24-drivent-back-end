@@ -3,7 +3,7 @@ import Joi from 'joi';
 
 export const creditCardSchema = Joi.object<CreditCard>({
   number: Joi.string()
-    .pattern(/^[0-9]{16}$/)
+    .pattern(/^[0-9]{4}\ [0-9]{4}\ [0-9]{4}\ [0-9]{4}$/)
     .required()
     .label('Has to be exactly 16 numbers'),
   name: Joi.string()
