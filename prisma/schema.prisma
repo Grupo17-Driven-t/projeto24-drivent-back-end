@@ -81,3 +81,12 @@ model Ticket {
   User   User?      @relation(fields: [userId], references: [id])
   isPaid Boolean    @default(false)
 }
+
+model Hotel {
+  id               Int    @id @default(autoincrement())
+  name             String @db.VarChar(100)
+  price            Int
+  qtdAccomodations Int
+
+  @@map("hotels")
+}
