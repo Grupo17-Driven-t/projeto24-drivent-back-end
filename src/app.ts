@@ -8,14 +8,14 @@ import { loadEnv, connectDb, disconnectDB } from '@/config';
 loadEnv();
 
 import { handleApplicationErrors } from '@/middlewares';
-import {  
+import {
   usersRouter,
   authenticationRouter,
   eventsRouter,
   enrollmentsRouter,
-  hotelRouter
+  hotelRouter,
+  ticketsRouter,
 } from '@/routers';
-
 const app = express();
 app
   .use(cors())
@@ -25,6 +25,7 @@ app
   .use('/auth', authenticationRouter)
   .use('/event', eventsRouter)
   .use('/enrollments', enrollmentsRouter)
+  .use('/tickets', ticketsRouter)
   .use('/hotels', hotelRouter)
   .use(handleApplicationErrors);
 
