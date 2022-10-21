@@ -20,7 +20,8 @@ jobs:
           envkey_POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
           envkey_POSTGRES_DATABASE: ${{ secrets.POSTGRES_DATABASE }}
           envkey_POSTGRES_PORT: ${{ secrets.POSTGRES_PORT }}
-          file_name: .env.test
+          envkey_JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          file_name: .env
       - name: Build
         run: npm run ci:build
 
