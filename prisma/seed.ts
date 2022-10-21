@@ -16,9 +16,14 @@ async function main() {
       },
     });
   }
-  await prisma.ticket.createMany({
-    data: [{ type: 'inperson' }, { type: 'online' }],
-  });
+
+  let ticket = await prisma.event.findMany();
+  if (!ticket) {
+    await prisma.ticket.createMany({
+      data: [{ type: 'inperson' }, { type: 'online' }],
+    });
+  }
+
   console.log({ event });
 }
 
