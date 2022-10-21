@@ -15,11 +15,12 @@ jobs:
         uses: SpicyPizza/create-envfile@v1
         with:
           envkey_DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          envkey_POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          envkey_POSTGRES_USERNAME: ${{ secrets.POSTGRES_USERNAME }}
           envkey_POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-          envkey_POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
-          envkey_PORT: ${{ secrets.PORT }}
-          file_name: .env
+          envkey_POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+          envkey_POSTGRES_DATABASE: ${{ secrets.POSTGRES_DATABASE }}
+          envkey_POSTGRES_PORT: ${{ secrets.POSTGRES_PORT }}
+          file_name: .env.test
       - name: Build
         run: npm run ci:build
 
