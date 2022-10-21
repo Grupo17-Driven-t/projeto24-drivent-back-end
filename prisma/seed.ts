@@ -1,6 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 import dayjs from 'dayjs';
 const prisma = new PrismaClient();
+import { Ticket } from '@prisma/client';
 
 async function main() {
   let event = await prisma.event.findFirst();
@@ -13,6 +14,13 @@ async function main() {
         startsAt: dayjs().toDate(),
         endsAt: dayjs().add(21, 'days').toDate(),
       },
+    });
+  }
+
+  let ticket = await prisma.event.findMany();
+  if (!ticket) {
+    await prisma.ticket.createMany({
+      data: [{ type: 'inperson' }, { type: 'online' }],
     });
   }
 
