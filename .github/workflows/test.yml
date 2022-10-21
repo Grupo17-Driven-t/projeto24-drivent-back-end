@@ -1,14 +1,6 @@
 name: Test
 on:
   pull_request:
-env:
-  POSTGRES_USERNAME: postgres
-  POSTGRES_PASSWORD: top_secret
-  POSTGRES_HOST: drivent-postgres-test
-  POSTGRES_PORT: 5432
-  POSTGRES_DB: drivent_test
-  JWT_SECRET: top_secret
-  DATABASE_URL: postgres://postgres:top_secret@drivent-postgres-test:5432/drivent_test?schema=public
 jobs:
   test:
     runs-on: ubuntu-20.04
@@ -17,8 +9,17 @@ jobs:
       matrix:
         node-version: [16.x]
     steps:
-      - uses: actions/checkout@v2
-
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      - name: Create .env_file
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          envkey_DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          envkey_POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          envkey_POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          envkey_POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+          envkey_PORT: ${{ secrets.PORT }}
+          file_name: .env.test
       - name: Build
         run: npm run ci:build
 

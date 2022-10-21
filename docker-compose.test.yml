@@ -8,23 +8,17 @@ services:
       POSTGRES_DB: ${POSTGRES_DATABASE}
       DATABASE_URL: ${DATABASE_URL}
     ports:
-      - 6022:5432
+      - ${POSTGRES_PORT}:${POSTGRES_PORT}
     volumes:
       - ~/data/drivent/postgres-test:/var/lib/postgresql/data
-    restart: always
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
+    command: postgres -p ${POSTGRES_PORT}
   drivent-test:
     build:
       context: .
       dockerfile: Dockerfile.test
     container_name: drivent-test
     depends_on:
-      drivent-postgres-test:
-        condition: service_healthy
+      - drivent-postgres-test
     logging:
       driver: 'json-file'
       options:
