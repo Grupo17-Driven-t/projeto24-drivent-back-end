@@ -34,10 +34,14 @@ services:
         max-file: '5'
     working_dir: /usr/src/drivent
 <<<<<<< HEAD
+<<<<<<< HEAD
     command: bash -c "npx prisma generate && npm run dev"
 =======
     command: bash -c "npx prisma generate && npx prisma migrate dev  && npm run dev"
 >>>>>>> 5bdf4e8fa879aeb499ff9cef7d84cd589f2b3a07
+=======
+    command: bash -c "npx prisma generate && npx prisma migrate dev  && npm run dev"
+>>>>>>> 095cc85457bef27cb00022f51a43ce154b1601f0
     environment:
       NODE_ENV: development
     volumes:

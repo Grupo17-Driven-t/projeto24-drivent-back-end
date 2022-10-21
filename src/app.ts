@@ -8,7 +8,10 @@ import { loadEnv, connectDb, disconnectDB } from '@/config';
 loadEnv();
 
 import { handleApplicationErrors } from '@/middlewares';
+<<<<<<< HEAD
 
+=======
+>>>>>>> 095cc85457bef27cb00022f51a43ce154b1601f0
 import {  
   usersRouter,
   authenticationRouter,
@@ -28,10 +31,15 @@ app
   .use('/event', eventsRouter)
   .use('/enrollments', enrollmentsRouter)
 <<<<<<< HEAD
+<<<<<<< HEAD
   .use('/tickets', ticketsRouter)
 =======
   .use('/hotels', hotelRouter)
 >>>>>>> 5bdf4e8fa879aeb499ff9cef7d84cd589f2b3a07
+=======
+  .use('/tickets', ticketsRouter)
+  .use('/hotels', hotelRouter)
+>>>>>>> 095cc85457bef27cb00022f51a43ce154b1601f0
   .use(handleApplicationErrors);
 
 export function init(): Promise<Express> {
