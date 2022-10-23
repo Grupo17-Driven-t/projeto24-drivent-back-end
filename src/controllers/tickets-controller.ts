@@ -1,7 +1,8 @@
 import { Request, Response } from 'express';
-import { findAll } from '@/services';
+import { findAll, createTicket } from '@/services';
 import httpStatus from 'http-status';
 import { AuthenticatedRequest } from '@/middlewares';
+import { Ticket } from '@prisma/client';
 
 export async function getAllTickets(req: Request, res: Response) {
   const result = await findAll();
@@ -10,6 +11,9 @@ export async function getAllTickets(req: Request, res: Response) {
 
 export async function registerTicket(req: AuthenticatedRequest, res: Response) {
   const { userId } = req;
+  const { type } = req.body;
 
-  res.sendStatus(httpStatus.NOT_IMPLEMENTED);
+  const newTicket: Ticket = await createTicket(userId, type);
+
+  res.status(httpStatus.CREATED).send(newTicket);
 }
