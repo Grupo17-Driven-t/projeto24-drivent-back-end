@@ -1,8 +1,9 @@
 import { Router } from 'express';
-import { getAllTickets } from '@/controllers';
+import { getAllTickets, registerTicket } from '@/controllers';
+import { authenticateToken } from '@/middlewares';
 
 const ticketsRouter = Router();
 
-ticketsRouter.get('/', getAllTickets);
+ticketsRouter.get('/', getAllTickets).post('/', authenticateToken, registerTicket);
 
 export { ticketsRouter };
