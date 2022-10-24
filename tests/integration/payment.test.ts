@@ -26,10 +26,6 @@ describe('Tests of route payment', () => {
     const creditCardData: CreditCard = __createCreditCard();
 
     const response = await server.post('/payment/card').send(creditCardData);
-    // eslint-disable-next-line no-console
-    console.log(creditCardData);
-    // eslint-disable-next-line no-console
-    console.log(response.statusCode);
 
     expect(response.statusCode).toBe(httpStatus.UNAUTHORIZED);
   });
