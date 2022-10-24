@@ -14,11 +14,29 @@ describe('crediCardSchema', () => {
     expect(error).toBeDefined();
   });
 
-  it('When doesn`t exist number`s card', () => {
+  it('When doesn`t exist cards`s number', () => {
     const withOutNumber: CreditCard = creditCard;
     delete withOutNumber.number;
 
     const { error } = creditCardSchema.validate(withOutNumber);
+
+    expect(error).toBeDefined();
+  });
+
+  it('When card`s name is wrong', () => {
+    const randomWord = faker.lorem.word(35);
+    const wrongNameCard: CreditCard = { ...creditCard, name: randomWord };
+
+    const { error } = creditCardSchema.validate(wrongNameCard);
+
+    expect(error).toBeDefined();
+  });
+
+  it('When doesn`t exist number`s card', () => {
+    const withOutName: CreditCard = creditCard;
+    delete withOutName.name;
+
+    const { error } = creditCardSchema.validate(withOutName);
 
     expect(error).toBeDefined();
   });
