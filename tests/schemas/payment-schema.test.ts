@@ -5,6 +5,7 @@ import { creditCardSchema } from '@/schemas/payments-schema';
 
 describe('crediCardSchema', () => {
   const creditCard: CreditCard = __createCreditCard();
+
   it('When card`s number is wrong', () => {
     const randomNumber = faker.random.numeric(16);
     const wrongNumberCard: CreditCard = { ...creditCard, number: randomNumber };
@@ -37,6 +38,78 @@ describe('crediCardSchema', () => {
     delete withOutName.name;
 
     const { error } = creditCardSchema.validate(withOutName);
+
+    expect(error).toBeDefined();
+  });
+
+  it('When card`s name is wrong', () => {
+    const randomWord = faker.lorem.word(35);
+    const wrongNameCard: CreditCard = { ...creditCard, name: randomWord };
+
+    const { error } = creditCardSchema.validate(wrongNameCard);
+
+    expect(error).toBeDefined();
+  });
+
+  it('When doesn`t exist number`s card', () => {
+    const withOutName: CreditCard = creditCard;
+    delete withOutName.name;
+
+    const { error } = creditCardSchema.validate(withOutName);
+
+    expect(error).toBeDefined();
+  });
+
+  it('When doesn`t exist number`s card', () => {
+    const withOutName: CreditCard = creditCard;
+    delete withOutName.name;
+
+    const { error } = creditCardSchema.validate(withOutName);
+
+    expect(error).toBeDefined();
+  });
+
+  it('When card`s name is wrong', () => {
+    const randomWord = faker.lorem.word(35);
+    const wrongNameCard: CreditCard = { ...creditCard, name: randomWord };
+
+    const { error } = creditCardSchema.validate(wrongNameCard);
+
+    expect(error).toBeDefined();
+  });
+
+  it('When doesn`t exist number`s card', () => {
+    const withOutName: CreditCard = creditCard;
+    delete withOutName.name;
+
+    const { error } = creditCardSchema.validate(withOutName);
+
+    expect(error).toBeDefined();
+  });
+
+  it('When doesn`t exist number`s card', () => {
+    const withOutName: CreditCard = creditCard;
+    delete withOutName.name;
+
+    const { error } = creditCardSchema.validate(withOutName);
+
+    expect(error).toBeDefined();
+  });
+
+  it('When card`s cvc is wrong', () => {
+    const randomNumber = faker.random.numeric(4);
+    const wrongCvcCard: CreditCard = { ...creditCard, cvc: randomNumber };
+
+    const { error } = creditCardSchema.validate(wrongCvcCard);
+
+    expect(error).toBeDefined();
+  });
+
+  it('When doesn`t exist card`s cvc', () => {
+    const withOutCvc: CreditCard = creditCard;
+    delete withOutCvc.cvc;
+
+    const { error } = creditCardSchema.validate(withOutCvc);
 
     expect(error).toBeDefined();
   });
