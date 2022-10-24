@@ -16,4 +16,6 @@ export default function createCreditCard() {
     validDate: `${date.substring(6, 8)}/${date.substring(3, 5)}`,
     cvc: faker.random.numeric(3),
   };
+
+  return creditCard;
 }
