@@ -12,7 +12,7 @@ beforeAll(async () => {
 
 const server = supertest(app);
 
-describe('Tests of route payment', () => {
+describe('POST /payment/card', () => {
   it('Has to return 400, if user send a wrong request disrespecting schema', async () => {
     const creditCardData: object = {};
     const token = await generateValidToken();
