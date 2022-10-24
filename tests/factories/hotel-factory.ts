@@ -6,7 +6,7 @@ export async function createHotel() {
     data: {
       name: faker.company.companyName(),
       price: Math.floor(faker.datatype.number()),
-      qtdAccomodations: Math.floor(faker.datatype.number({ min: 10 })),
+      qtdAccommodations: Math.floor(faker.datatype.number({ min: 10 })),
     },
   });
 }

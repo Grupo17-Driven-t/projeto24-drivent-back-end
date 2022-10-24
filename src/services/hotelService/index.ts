@@ -1,3 +1,4 @@
+import { TicketType } from '@prisma/client';
 import hotelRepository from '../../repositories/hotel-repository/index';
 
 async function findHotelPrice() {
