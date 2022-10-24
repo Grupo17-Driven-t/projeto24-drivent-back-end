@@ -1,8 +1,7 @@
 import app, { init } from '@/app';
-import faker from '@faker-js/faker';
 import httpStatus from 'http-status';
 import supertest from 'supertest';
-import { createHotel, createUser, ticketFactory } from '../factories';
+import { createUser, ticketFactory } from '../factories';
 import { cleanDb, generateValidToken } from '../helpers';
 
 beforeAll(async () => {
